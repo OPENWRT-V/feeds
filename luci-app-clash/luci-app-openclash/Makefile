@@ -207,6 +207,9 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.*.lmo $(1)/usr/lib/lua/luci/i18n/
 	$(CP) $(PKG_BUILD_DIR)/files/* $(1)/
+	$(INSTALL_DIR) $(1)/etc/openclash/core
+	$(INSTALL_BIN) ./files/bin/$(ARCH)/clash_tun $(1)/etc/openclash/core/clash_tun
+	$(INSTALL_BIN) ./files/bin/$(ARCH)/clash_game $(1)/etc/openclash/core/clash_game
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
